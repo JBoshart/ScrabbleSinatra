@@ -1,0 +1,23 @@
+<body>
+  <h1>Hey, word lover!</h1>
+
+<fieldset>
+  <legend>Score a word!</legend>
+  <form action="" method="post" accept-charset="utf-8">
+    <label for="word">Score your word:</label>
+    <input type="text" name="word" value="" id="word">
+
+    <input type="submit" value="Get score!">
+  </form>
+</fieldset>
+
+<% if @word_to_score %>
+  <% if Scoring.check_if_letters(@word_to_score) == false %>
+    <p><%= "That word contains an invalid character, we can only score words containing characters in the Latin Alphabet. Please try again." %></p>
+  <% else %>
+  <% score = Scoring.score(@word_to_score) %>
+  <p>Awesome word! The score of <%= @word_to_score %> is <%= score %>!</p>
+  <% end %>
+<% end %>
+
+</body>
