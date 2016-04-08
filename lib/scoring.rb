@@ -13,6 +13,16 @@ class Scoring
     !word.match(/[^A-Za-z]/)
   end
 
+  def self.letters_and_scores(word)
+    word_breakdown = []
+    letters = word.split(//)
+    letters.each do |letter|
+      single_score = Scoring.score(letter)
+      word_breakdown << [letter, single_score]
+    end
+    return word_breakdown
+  end
+
   def self.score(word)
     arr = word.downcase.split(//)
     arr.length == 7 ? tally = 50 : tally = 0

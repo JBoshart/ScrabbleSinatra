@@ -20,4 +20,18 @@
   <% end %>
 <% end %>
 
+<% if @word_to_score %>
+  <p>Your letter scores break down as follows:
+  <% word_breakdown = Scoring.letters_and_scores(@word_to_score) %>
+  <% looped = 0 %>
+  <% word_breakdown.each do |letter, score| %>
+    <% looped += 1 %>
+    <% if looped != word_breakdown.length %>
+        the value of "<%= letter %>" is <%= score %>,
+    <% else %>
+        and lastly, the value of "<%= letter %>" is <%= score %>.
+    <% end %>
+  <% end %></p>
+<% end %>
+
 </body>
