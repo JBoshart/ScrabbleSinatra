@@ -20,17 +20,22 @@
     <%= "That word contains an invalid character, we can only score words containing characters in the Latin Alphabet. Please try again." %>
     <% break %>
     <% end %>
+
     <% score = Scoring.score(score_needed) %>
-    Great! <%= "The score of the word '#{score_needed}' is #{score}." %>
+    Great! <%= "The score of the word '#{score_needed}' is #{score}." %></p>
+
+    <p>Your letter scores break down as follows:
+    <% word_breakdown = Scoring.letters_and_scores(score_needed) %>
+    <% looped = 0 %>
+    <% word_breakdown.each do |letter, score| %>
+        <% looped += 1 %>
+        <% if looped != word_breakdown.length %>
+            the value of "<%= letter %>" is <%= score %>,
+        <% else %>
+            and lastly, the value of "<%= letter %>" is <%= score %>.
+        <% end %>
+      <% end %></p>
     <% end %>
-  </p>
   <% end %>
-  
+
 </body>
-
-
-<!-- This used to be a part of the above loop because I thought maybe I would want to store these words and their scores in a hash in the future. I'm keeping it so that if it comes up that I want it, I won't forget what the heck I was doing with it. :)
-
-words_with_scores = {}
-words_with_scores[score_needed] = score
-words_with_scores  -->
