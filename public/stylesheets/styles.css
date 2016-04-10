@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: grey;
+}
+
+html {
+  background-image: url('../images/srab_back.jpg');
+}
+
+header {
+  background-color: black;
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  margin-left: 15em;
+  margin-right: 15em;
+  border-radius: 2em 2em;
+  clear: both;
+}
+
+header hr {
+  color: white
+}
+
+nav {
+  clear: both;
+  text-align: center;
+}
+
+nav li {
+  display: inline;
+  font-size: 2em;
+  padding: .5em;
+}
+
+h1 {
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-size: 4em;
+  padding: 0em;
+  margin-bottom: .1em;
+  margin-top: .1em;
+}
+
+h2 {
+  color: white;
+  font-size: 1.3em;
+  text-align: left;
+  padding: 1em;
+  padding-bottom: .1em;
+  margin: 0%;
+}
+
+.welcome {
+  background-color: black;
+  margin: 2em;
+  border-radius: 2em 2em 2em 2em;
+  color: white;
+  text-align: left;
+  margin-right: 8em;
+  margin-left: 8em;
+}
+
+p {
+  padding: 1em;
+  margin: 0em;
+}
+
+.score {
+  background-color: black;
+  margin: 2em;
+  padding: 1em;
+  border-radius: 2em 2em 2em 2em;
+  color: white;
+  text-align: left;
+  margin-right: 8em;
+  margin-left: 8em;
+}
+
+.score-many {
+  background-color: black;
+  margin: 2em;
+  padding: 1em;
+  border-radius: 2em 2em 2em 2em;
+  color: white;
+  text-align: left;
+  margin-right: 8em;
+  margin-left: 8em;
+}
+
+fieldset {
+  border-radius: 2em;
+  font-size: 1.5em;
+}
+
+label {
+  display: block;
+}

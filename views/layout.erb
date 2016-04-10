@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Scrabble - Home</title>
+  <title>Scrabble</title>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="css" href="../stylesheets/styles.css">
+  <link rel="stylesheet" type="css" href="stylesheets/styles.css">
 </head>
 
 <header>
-
+  <h1>Scrabble!</h1>
+  <hr />
+<nav><ul>
+  <li><a href="./">Home</a></li>
+  <li><a href="./score">Score a Word!</a></li>
+  <li><a href="./score-many">Score Lots of Words!</a></li>
+</ul>
+</nav>
 </header>
 
+<body>
 <%= yield %>
-
-<footer>
-
-</footer>
+</body>
 
 </html>

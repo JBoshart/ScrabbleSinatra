@@ -1,6 +1,5 @@
 <body>
-  <h1>Hey, word lover!</h1>
-
+<article class="score">
 <fieldset>
   <legend>Score a word!</legend>
   <form action="" method="post" accept-charset="utf-8">
@@ -16,12 +15,12 @@
     <p><%= "That word contains an invalid character, we can only score words containing characters in the Latin Alphabet. Please try again." %></p>
   <% else %>
   <% score = Scoring.score(@word_to_score) %>
-  <p>Awesome word! The score of <%= @word_to_score %> is <%= score %>!</p>
+  <p>Awesome word! The score of <%= @word_to_score %> is <%= score %>!
   <% end %>
 <% end %>
 
 <% if @word_to_score %>
-  <p>Your letter scores break down as follows:
+  <br />Your letter scores break down as follows:
   <% word_breakdown = Scoring.letters_and_scores(@word_to_score) %>
   <% looped = 0 %>
   <% word_breakdown.each do |letter, score| %>
@@ -33,5 +32,5 @@
     <% end %>
   <% end %></p>
 <% end %>
-
+</article>
 </body>

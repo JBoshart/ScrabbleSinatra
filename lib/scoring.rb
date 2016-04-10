@@ -37,17 +37,99 @@ class Scoring
     high_word = ""
     high_score = 0
     array_of_words.each do |word|
-      self.score(word)
-      if self.score(word) > high_score
+      current_scoring = self.score(word)
+      if current_scoring > high_score
         high_word = word
-        high_score = self.score(word)
-      elsif self.score(word) == high_score
+        high_score = current_scoring
+      elsif current_scoring == high_score
+        if word.length < high_word.length && high_word.length != 7
+          high_word = word
+          high_score = current_scoring
+        end
+      end
+    end
+    return high_word
+  end
+
+  def self.shortest_high_value(array_of_words)
+    high_word = ""
+    high_score = 0
+    array_of_words.each do |word|
+      current_scoring = self.score(word)
+      if current_scoring > high_score
+        high_word = word
+        high_score = current_scoring
+      elsif current_scoring == high_score
         if word.length < high_word.length
           high_word = word
-          high_score = self.score(word)
+          high_score = current_scoring
         end
       end
     end
     return high_word
   end
 end
+
+# The above works, but is (obviously) repetative. I tried to correct this in a few ways, but ulimately couldn't make them work. I've included them because, though they are failures, I feel like they were close. I'm hoping for some feedback on where I went wrong.
+
+# attempt one:
+# def self.condition_one(word, high_word)
+#   word.length < high_word.length && high_word.length != 7
+# end
+#
+# def self.condition_two(word, high_word)
+#   word.length < high_word.length
+# end
+#
+# def self.highest_score_from(array_of_words, condition)
+#   high_word = ""
+#   high_score = 0
+#   array_of_words.each do |word|
+#     current_scoring = self.score(word)
+#     if current_scoring > high_score
+#       high_word = word
+#       high_score = current_scoring
+#     elsif current_scoring == high_score
+#       if "conditionone"
+#         Scoring.condition_one(word, high_word)
+#         high_word = word
+#         high_score = current_scoring
+#       elsif "conditiontwo"
+#         Scoring.condition_two(word, high_word)
+#         high_word = word
+#         high_score = current_scoring
+#       end
+#     end
+#   end
+#   return high_word
+# end
+# end
+#
+#
+
+# Attempt 2: 
+# def self.highest_score_from(array_of_words, condition)
+# high_word = ""
+# high_score = 0
+# array_of_words.each do |word|
+#   current_scoring = self.score(word)
+#   if current_scoring > high_score
+#     high_word = word
+#     high_score = current_scoring
+#   elsif current_scoring == high_score
+#     if "high"
+#       if word.length < high_word.length && high_word.length != 7
+#       high_word = word
+#       high_score = current_scoring
+#       end
+#     elsif "short"
+#       if word.length < high_word.length
+#       high_word = word
+#       high_score = current_scoring
+#       end
+#     end
+#   end
+# end
+# return high_word
+# end
+# end

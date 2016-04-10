@@ -1,12 +1,17 @@
 <body>
-  <h1>Hey, word lover! </h1>
+<article class="score-many">
+  <p>
+    So you've got a lot of words to score? We can help you with that! First, select which is most important to you: the shortest high-value word OR the highest value overall.
+
+    Once you've made your selection, type your words in the text box below with a space between each word. We'll do the rest. <span class="emoji">😊</span>
+  </p>
 
   <fieldset>
     <legend>Score lots of words!</legend>
-    <p>
-      So you've got a lot of words to score? We can help you with that! In the text box below enter your words with a space between them. We'll do the rest.
-    </p>
     <form action="" method="post" accept-charset="utf-8">
+      <label><input type="radio" name="rule_picked" value="shortest-high-value-word">shortest high-value word</label>
+      <label><input type="radio" name="rule_picked" value="highest-value-overall">highest value overall</label>
+      <br />
       <label for="word">Score your words:</label>
       <input type="text" name="words" value="" id="word">
       <input type="submit" value="Get scores!">
@@ -22,9 +27,9 @@
     <% end %>
 
     <% score = Scoring.score(score_needed) %>
-    Great! <%= "The score of the word '#{score_needed}' is #{score}." %></p>
+    <%= "The score of the word '#{score_needed}' is #{score}. " %>
 
-    <p>Your letter scores break down as follows:
+    The letter scores of '<%= score_needed %>' break down as follows:
     <% word_breakdown = Scoring.letters_and_scores(score_needed) %>
     <% looped = 0 %>
     <% word_breakdown.each do |letter, score| %>
@@ -32,10 +37,19 @@
         <% if looped != word_breakdown.length %>
             the value of "<%= letter %>" is <%= score %>,
         <% else %>
-            and lastly, the value of "<%= letter %>" is <%= score %>.
+            and lastly, the value of "<%= letter %>" is <%= score %>.<br /><br />
         <% end %>
-      <% end %></p>
-    <% end %>
-  <% end %>
+      <% end %>
+      <% end %>
+      <% end %>
 
+
+    <% if params[:rule_picked] == "highest-value-overall" %>
+      <% highest_value_word = Scoring.highest_score_from(@words_to_score) %>
+      <p>Of the words you have entered, the word that has the highest value is '<%= highest_value_word %>'.</p>
+    <% elsif params[:rule_picked] == "shortest-high-value-word" %>
+      <% highest_value_word = Scoring.shortest_high_value(@words_to_score) %>
+      <p>Of the words you have entered, the word that has the highest value is '<%= highest_value_word %>'.</p>
+      <% end %>
+    </article>
 </body>
